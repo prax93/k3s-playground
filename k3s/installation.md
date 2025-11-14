@@ -70,3 +70,19 @@ users:
 ---
 #### Further Documentations:
 [K3s Installation Docu](https://docs.k3s.io/installation)
+
+
+# Install Headlamp K8s Dashboard
+```bash
+kubectl apply -f ./dashboard/headlamp.yaml
+```
+## Create Service Account & Give Admin rights
+```bash
+kubectl -n kube-system create serviceaccount headlamp-admin
+kubectl create clusterrolebinding headlamp-admin --serviceaccount=kube-system:headlamp-admin --clusterrole=cluster-admin
+```
+## Generate Token for Login
+```bash
+kubectl create token headlamp-admin -n kube-system
+```
+
