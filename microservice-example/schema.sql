@@ -42,5 +42,5 @@ INSERT INTO user_roles (user_id, role_id) VALUES (2,2);
 INSERT INTO user_roles (user_id, role_id) VALUES (3,1);
 INSERT INTO user_roles (user_id, role_id) VALUES (1,1);
 
-INSERT INTO todos (user_id, todo, todo_status) VALUES (1, 'K3s installieren', 'done');
-INSERT INTO todos (user_id, todo, todo_status) VALUES (1, 'CI Installieren', 'backlog');
+INSERT INTO todos (user_id, todo, todo_status) VALUES (2, 'K3s installieren', 'done');
+INSERT INTO todos (user_id, todo, todo_status) VALUES (2, 'CI Installieren', 'backlog');
