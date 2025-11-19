@@ -17,7 +17,8 @@ CREATE TABLE todos (
 	todo_id SERIAL PRIMARY KEY,
 	user_id INTEGER REFERENCES users(user_id),
 	todo VARCHAR (80) NOT NULL,
-	todo_status status NOT NULL
+	todo_status status NOT NULL,
+	description VARCHAR (1000)
 );
 
 CREATE TABLE roles (
@@ -31,16 +32,18 @@ CREATE TABLE user_roles (
 	role_id INTEGER REFERENCES roles(role_id)
 );
 
-INSERT INTO roles (role) VALUES ('basic');
 INSERT INTO roles (role) VALUES ('full');
+INSERT INTO roles (role) VALUES ('basic');
+
 
 INSERT INTO users (user_name, password, admin) VALUES ('admin', 'admin', TRUE);
 INSERT INTO users (user_name, password, admin) VALUES ('shana', 'abkl123!!', TRUE);
 INSERT INTO users (user_name, password, admin) VALUES ('alessia', 'alessia', FALSE);
 
-INSERT INTO user_roles (user_id, role_id) VALUES (2,2);
-INSERT INTO user_roles (user_id, role_id) VALUES (3,1);
 INSERT INTO user_roles (user_id, role_id) VALUES (1,1);
+INSERT INTO user_roles (user_id, role_id) VALUES (2,1);
+INSERT INTO user_roles (user_id, role_id) VALUES (3,2);
+
 
 INSERT INTO todos (user_id, todo, todo_status) VALUES (2, 'K3s installieren', 'done');
 INSERT INTO todos (user_id, todo, todo_status) VALUES (2, 'CI Installieren', 'backlog');
