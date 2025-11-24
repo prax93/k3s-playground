@@ -4,7 +4,6 @@ import model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 public class Repository {
 
@@ -13,8 +12,8 @@ public class Repository {
     private final String dbUrl = System.getenv("dbUrl");
 
 
-    private final Connection dbConnect() throws SQLException {
-        Connection conn = null;
+    private Connection dbConnect() throws SQLException {
+        Connection conn;
         conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         return conn;
     }
@@ -22,9 +21,12 @@ public class Repository {
     public ArrayList<User> getUsers() throws SQLException {
         ArrayList<User> users = new ArrayList<>();
 
-        try (Statement stmt = dbConnect().createStatement()) {
-            ResultSet rs = stmt.executeQuery("SELECT user_id, user_name, admin FROM users");
-            while(rs.next()){
+        try (
+                Connection conn = dbConnect();
+                Statement stmt = conn.createStatement()) {
+                ResultSet rs = stmt.executeQuery("SELECT user_id, user_name, admin FROM users");
+
+                while(rs.next()){
                 User user = new User(
                         rs.getInt("user_id"),
                         rs.getString("user_name"),
