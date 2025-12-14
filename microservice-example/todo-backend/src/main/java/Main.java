@@ -1,19 +1,12 @@
-import model.User;
-import repository.Repository;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
+import service.UserService;
 
 public class Main {
 
-    static void main() throws SQLException {
-        System.out.println("Hello World");
+    static void main() throws Exception{
 
-        Repository repository = new Repository();
+        UserService userService = new UserService();
 
-        ArrayList<User> users = repository.getUsers();
-
-        System.out.print(users);
+        Boolean loggedIn = userService.login("testuser","testpassword");
 
     }
 }
