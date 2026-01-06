@@ -32,6 +32,12 @@ CREATE TABLE user_roles (
 	role_id INTEGER REFERENCES roles(role_id)
 );
 
+CREATE TABLE user_token (
+	PRIMARY KEY (user_id),
+	user_id INTEGER REFERENCES users(user_id),
+	token VARCHAR(80) UNIQUE
+);
+
 INSERT INTO roles (role) VALUES ('full');
 INSERT INTO roles (role) VALUES ('basic');
 
