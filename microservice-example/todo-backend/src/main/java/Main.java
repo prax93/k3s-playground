@@ -1,6 +1,12 @@
+import service.UserService;
+
 public class Main {
 
-    public static void main(String[] args){
-        System.out.println("Hello World");
+    static void main() throws Exception{
+
+        UserService userService = new UserService();
+
+        Boolean loggedIn = userService.login("testuser","testpassword");
+
     }
 }
